@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" enctype="multipart/form-data"></form>
+<input type="file" name="f1">
+<button id="b1">上传</button>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+    $('#b1').click(function () {
+        var form_obj = new FormData();
+        form_obj.append('f1',$('[name="f1"]')[0].files[0])
+
+        $.ajax({
+            url:'/upload/',
+            type:'post',
+            processData:false,
+            contentType:false,
+            data:form_obj,
+            success:function (res) {
+                alert(res)
+            }
+
+        })
+
+
+    })
+
+</script>
+
+</body>
+</html>
